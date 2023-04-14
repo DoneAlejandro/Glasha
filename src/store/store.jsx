@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import questionsReducer from '../reducers/questionsReducer';
 
-export const store = configureStore({
+export const storeQuestions = configureStore({
 	reducer: {
-		// questions: questionsReducer,
+		questions: questionsReducer,
 	},
 });

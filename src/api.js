@@ -8,7 +8,9 @@ import axios from 'axios';
 export const fetchQuestions = createAsyncThunk(
 	'questions/fetchQuestions',
 	async () => {
-		const response = await axios.get('http://localhost:8001/questions'); 
+		const response = await axios.get('http://localhost:8001/questions');
+
+		
 		return response.data;
 	}
 );
