@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchQuestions } from '../../api';
 import { answerQuestion, resetAnswer } from '../../slices/questionsSlice';
 
 export const Test = () => {
@@ -33,7 +34,7 @@ export const Test = () => {
 
 	const questions = useSelector(state => state.questions.questions.questions);
 	const dispatch = useDispatch();
-	console.log(questions);
+
 	const handlerAnswer = (questionId, answer) => {
 		dispatch(answerQuestion({ questionId, answer }));
 	};
@@ -42,9 +43,9 @@ export const Test = () => {
 	};
 
 	useEffect(() => {
-		return 
-	})
-
+		dispatch(fetchQuestions);
+	}, [dispatch]);
+	console.log(questions);
 	return (
 		<>
 			{/* <h2>{questions}</h2>
@@ -78,3 +79,4 @@ export const Test = () => {
 		</>
 	);
 };
+// напиши оптимизированное приложение по тестированию на профориентацию с использованием json server, createAsyncThunk, axios , redux-toolkit, useEffect и useMemo, не забывай о комментариях 
