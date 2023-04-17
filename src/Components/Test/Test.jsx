@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchQuestions } from '../../api';
 import { answerQuestion, resetAnswer } from '../../slices/questionsSlice';
+import style from './Test.module.scss';
 
 export const Test = () => {
 	// const questions = useSelector(state => state.questions);
-	// const [currentItem, setCurrentItem] = useState(0);
+	const [currentItem, setCurrentItem] = useState(0);
 	// console.log(questions);
 	// const nextQuestions = () => {
 	// 	setCurrentItem(currentItem => currentItem + 1);
@@ -46,6 +47,7 @@ export const Test = () => {
 		dispatch(fetchQuestions);
 	}, [dispatch]);
 	console.log(questions);
+	// console.log(questions[currentItem].id);
 	return (
 		<>
 			{/* <h2>{questions}</h2>
@@ -56,7 +58,7 @@ export const Test = () => {
 			</ul>
 			<button onClick={nextQuestions}>next</button> */}
 			{/* {content} */}
-			{questions.map(question => (
+			{/* {questions.map(question => (
 				<div key={question.id}>
 					<h3>{question.text}</h3>
 					<ul>
@@ -74,9 +76,28 @@ export const Test = () => {
 						))}
 					</ul>
 				</div>
-			))}
+			))} */}
+			<div className={style.testBox}>
+				<h3>{questions[currentItem].text}</h3>
+				<ul>
+					{questions[currentItem].options.map((answer, index) => (
+						<li key={index}>
+							<input
+								type='radio'
+								name={`answer-${answer.index}`}
+								value={answer}
+								checked={questions[currentItem].answer === answer}
+								onChange={() =>
+									handlerAnswer(questions[currentItem].id, answer)
+								}
+							/>
+							{answer}
+						</li>
+					))}
+				</ul>
+			</div>
 			<button onClick={handlerReset}>RESET</button>
 		</>
 	);
 };
-// напиши оптимизированное приложение по тестированию на профориентацию с использованием json server, createAsyncThunk, axios , redux-toolkit, useEffect и useMemo, не забывай о комментариях 
+// напиши оптимизированное приложение по тестированию на профориентацию с использованием json server, createAsyncThunk, axios , redux-toolkit, useEffect и useMemo, не забывай о комментариях
