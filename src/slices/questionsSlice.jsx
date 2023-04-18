@@ -34,6 +34,8 @@ import { fetchQuestions } from '../api';
 
 const initialState = {
 	questions: [],
+	status: 'idle',
+	error: null,
 	// questions: [
 	// 	{
 	// 		id: 1,
@@ -87,17 +89,27 @@ export const questionsSlice = createSlice({
 	name: 'questions',
 	initialState,
 	reducers: {
-		answerQuestion(state, action) {
-			const { questionsId, answer } = action.payload;
-			const question = state.questions.find(q => q.id === questionsId);
-			if (question) {
-				question.answer = answer;
-			}
+		answerQuestion: (state, action) => {
+			const { questionsIndex, selectedOption } = action.payload;
+			state.questions[questionsIndex].selectedOption = selectedOption;
 		},
-		resetAnswer(state) {
-			state.questions.forEach(q => (q.answer = null));
+		resetAnswer: state => {
+			state.questions.forEach(question => {
+				question.selectedOption = null;
+			});
 		},
 	},
+	// 	answerQuestion(state, action) {
+	// 		const { questionsId, answer } = action.payload;
+	// 		const question = state.questions.find(q => q.id === questionsId);
+	// 		if (question) {
+	// 			question.answer = answer;
+	// 		}
+	// 	},
+	// 	resetAnswer(state) {
+	// 		state.questions.forEach(q => (q.answer = null));
+	// 	},
+	// },
 	extraReducers: builder => {
 		builder
 			.addCase(fetchQuestions.pending, state => {
