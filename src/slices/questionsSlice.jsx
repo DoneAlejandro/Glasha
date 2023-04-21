@@ -1,130 +1,81 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchQuestions } from '../api';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getQuestions } from '../api';
 
-// const questionsSlice = createSlice({
-// 	name: 'questions',
-// 	initialState: {
-// 		data: fetchQuestions,
-// 		status: 'idle',
-// 		error: null,
-// 	},
-// 	reducers: {
-// 		// setQuestions: (state, action) => {
-// 		// 	state.options = action.payload;
-// 		// },
-// 	},
-// 	extraReducers: builder => {
-// 		builder
-// 			.addCase(fetchQuestions.pending, state => {
-// 				state.status = 'loading';
-// 			})
-// 			.addCase(fetchQuestions.fulfilled, (state, action) => {
-// 				state.status = 'succeeded';
-// 				state.data = action.payload;
-// 			})
-// 			.addCase(fetchQuestions.rejected, (state, action) => {
-// 				state.status = 'failed';
-// 				state.error = action.error.message;
-// 			});
-// 	},
-// });
-
-// // export const { setQuestions } = questionsSlice.actions;
-// export default questionsSlice.reducer;
+export const fetchQuestions = createAsyncThunk(
+	'test/fetchQuestions',
+	async () => {
+		const questions = await getQuestions();
+		return questions;
+	}
+);
 
 const initialState = {
-	questions: [],
-	status: 'idle',
+	questions: [
+		{
+			id: 1,
+			text: 'Вам нравится работать с людьми?',
+			options: [
+				{
+					id: 1,
+					text: 'Да',
+				},
+				{
+					id: 2,
+					text: 'Нет',
+				},
+			],
+		},
+		{
+			id: 2,
+			text: 'Вы любите заниматься программированием?',
+			options: [
+				{
+					id: 1,
+					text: 'Да',
+				},
+				{
+					id: 2,
+					text: 'Нет',
+				},
+			],
+		},
+	],
+	currentQuestionsIndex: 0,
+	answers: {},
+	isLoading: false,
 	error: null,
-	// questions: [
-	// 	{
-	// 		id: 1,
-	// 		text: 'Что вам интересно?',
-	// 		options: [
-	// 			'Программирование',
-	// 			'Музыка',
-	// 			'Фильмы',
-	// 			'Путешествия',
-	// 			'Чтение',
-	// 			'Инженерное дело',
-	// 			'Искусство',
-	// 			'Иностранные языки',
-	// 		],
-	// 		answer: null,
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		text: 'Какие предметы вам нравится изучать?',
-	// 		options: [
-	// 			'Математика',
-	// 			'Физика',
-	// 			'Химия',
-	// 			'Биология',
-	// 			'Информатика',
-	// 			'Иностранные языки',
-	// 			'История',
-	// 			'География',
-	// 		],
-	// 		answer: null,
-	// 	},
-	// 	{
-	// 		id: 3,
-	// 		text: 'Какой у вас опыт работы?',
-	// 		options: [
-	// 			'Отсутствует',
-	// 			'Стажировка в технологической компании',
-	// 			'Работа в розничном магазине летом',
-	// 			'Волонтерство в некоммерческой организации',
-	// 			'Работа репетитором',
-	// 			'Обучение в строительном ученичестве',
-	// 			'Фрилансерская работа в качестве графического дизайнера',
-	// 			'Участие в студенческой программе работы в университетской лаборатории',
-	// 		],
-	// 		answer: null,
-	// 	},
-	// ],
 };
 
-export const questionsSlice = createSlice({
-	name: 'questions',
+const questionsSlice = createSlice({
+	name: 'test',
 	initialState,
 	reducers: {
-		answerQuestion: (state, action) => {
-			const { questionsIndex, selectedOption } = action.payload;
-			state.questions[questionsIndex].selectedOption = selectedOption;
+		setAnswer: (state, action) => {
+			const { questionsId, optionId } = action.payload;
+			state.answers[questionsId] = optionId;
 		},
-		resetAnswer: state => {
-			state.questions.forEach(question => {
-				question.selectedOption = null;
-			});
+		setCurrentQuestionsIndex: (state, action) => {
+			state.currentQuestionsIndex = action.payload;
 		},
 	},
-	// 	answerQuestion(state, action) {
-	// 		const { questionsId, answer } = action.payload;
-	// 		const question = state.questions.find(q => q.id === questionsId);
-	// 		if (question) {
-	// 			question.answer = answer;
-	// 		}
-	// 	},
-	// 	resetAnswer(state) {
-	// 		state.questions.forEach(q => (q.answer = null));
-	// 	},
-	// },
 	extraReducers: builder => {
 		builder
 			.addCase(fetchQuestions.pending, state => {
-				state.status = 'loading';
+				state.isLoading = true;
 			})
 			.addCase(fetchQuestions.fulfilled, (state, action) => {
-				state.status = 'succeeded';
+				state.isLoading = false;
+
 				state.questions = action.payload;
+				state.error = null;
 			})
 			.addCase(fetchQuestions.rejected, (state, action) => {
-				state.status = 'failed';
+				state.isLoading = false;
 				state.error = action.error.message;
 			});
 	},
 });
 
-export const { answerQuestion, resetAnswer } = questionsSlice.actions;
+export const { setAnswer, setCurrentQuestionsIndex } = questionsSlice.actions;
+
 export default questionsSlice.reducer;

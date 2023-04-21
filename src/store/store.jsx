@@ -1,11 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { fetchQuestions } from '../api';
-import questionsReducer from '../reducers/questionsReducer';
+import { rootReducer } from '../reducers/questionsReducer';
 
-export const storeQuestions = configureStore({
-	reducer: {
-		questions: questionsReducer,
-	},
+export const store = configureStore({
+	reducer: rootReducer,
 });
-
-storeQuestions.dispatch(fetchQuestions());
