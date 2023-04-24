@@ -1,0 +1,17 @@
+@import '../../UI/variables.scss';
+.header {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	max-width: $container-width-big;
+	margin: 0 auto;
+	align-items: center;
+	padding: 20px 0;
+	svg {
+		width: 50px;
+		height: 50px;
+	}
+	&__linkItem {
+		padding: 0 10px;
+	}
+}

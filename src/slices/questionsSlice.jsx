@@ -10,36 +10,7 @@ export const fetchQuestions = createAsyncThunk(
 );
 
 const initialState = {
-	questions: [
-		{
-			id: 1,
-			text: 'Вам нравится работать с людьми?',
-			options: [
-				{
-					id: 1,
-					text: 'Да',
-				},
-				{
-					id: 2,
-					text: 'Нет',
-				},
-			],
-		},
-		{
-			id: 2,
-			text: 'Вы любите заниматься программированием?',
-			options: [
-				{
-					id: 1,
-					text: 'Да',
-				},
-				{
-					id: 2,
-					text: 'Нет',
-				},
-			],
-		},
-	],
+	questions: [],
 	currentQuestionsIndex: 0,
 	answers: {},
 	isLoading: false,

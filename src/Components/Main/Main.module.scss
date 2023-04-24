@@ -1,4 +1,6 @@
-// .main {
-// 	flex: 1 1 auto;
-// 	background: #d04f4f;
-// }
+@import '../../UI/variables.scss';
+.main {
+	flex: 1 1 auto;
+	background: $bg-main;
+	display: flex;
+}

@@ -5,9 +5,9 @@ import style from './Main.module.scss';
 export const Main = () => {
 	return (
 		<>
-			<div className={style.main}>
+			<main className={style.main}>
 				<Routing />
-			</div>
+			</main>
 		</>
 	);
 };
