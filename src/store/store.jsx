@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { rootReducer } from '../reducers/questionsReducer';
+import questionsReducer from './questionsSlice/questionsSlice';
 
 export const store = configureStore({
-	reducer: rootReducer,
+	reducer: {
+		questions: questionsReducer,
+	},
 });

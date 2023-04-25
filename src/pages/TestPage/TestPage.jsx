@@ -1,10 +1,12 @@
 import React from 'react';
-import { Test } from '../../Components/Test(1var)';
+import { TestList } from '../../Components/TestList';
 
 export const TestPage = () => {
 	return (
 		<>
-			<Test />
+			{/* <Test /> */}
+			{/* <Tests /> */}
+			<TestList />
 		</>
 	);
 };

@@ -12,9 +12,9 @@ export const Header = () => {
 						<text
 							x='50'
 							y='55'
-							font-size='30'
-							font-weight='bold'
-							text-anchor='middle'
+							fontSize='30'
+							fontWeight='bold'
+							textAnchor='middle'
 							fill='#FFFFFF'
 						>
 							ТЕСТ

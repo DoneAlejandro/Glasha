@@ -1,8 +1,8 @@
 import style from './App.module.scss';
 
-import { Footer } from './Components/Footer';
-import { Header } from './Components/Header';
-import { Main } from './Components/Main';
+import { Footer } from './Footer';
+import { Header } from './Header';
+import { Main } from './Main';
 
 function App() {
 	return (
