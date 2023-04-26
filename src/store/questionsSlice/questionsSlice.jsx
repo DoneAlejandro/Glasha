@@ -1,4 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchQuestions } from '../../api';
 
 const initialState = {
 	questions: [],
@@ -7,18 +8,18 @@ const initialState = {
 	score: 0,
 };
 
-export const fetchQuestions = createAsyncThunk(
-	'questions/fetchQuestions',
-	async function () {
-		const response = await fetch(
-			'https://jsonplaceholder.typicode.com/todos?_limit=10'
-		);
-		console.log(response);
-		const data = await response.json();
+// export const fetchQuestions = createAsyncThunk(
+// 	'questions/fetchQuestions',
+// 	async function () {
+// 		const response = await fetch(
+// 			'https://jsonplaceholder.typicode.com/todos?_limit=10'
+// 		);
+// 		console.log(response);
+// 		const data = await response.json();
 
-		return data;
-	}
-);
+// 		return data;
+// 	}
+// );
 // debugger;
 const questionsSlice = createSlice({
 	name: 'questions',
