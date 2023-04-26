@@ -3,7 +3,7 @@ import { fetchQuestions } from '../../api';
 
 const initialState = {
 	questions: [],
-	status: null,
+	status: 'idle',
 	error: null,
 	score: 0,
 };
@@ -34,7 +34,7 @@ const questionsSlice = createSlice({
 			.addCase(fetchQuestions.fulfilled, (state, action) => {
 				state.status = 'resolved';
 				state.questions = action.payload;
-				console.log(state.questions);
+				// console.log(state.questions);
 				state.error = null;
 			})
 			.addCase(fetchQuestions.rejected, (state, action) => {

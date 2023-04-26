@@ -9,10 +9,10 @@ import { Header } from './Header';
 import { Main } from './Main';
 
 function App() {
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(fetchQuestions());
-	}, [dispatch]);
+	// const dispatch = useDispatch();
+	// useEffect(() => {
+	// 	dispatch(fetchQuestions());
+	// }, [dispatch]);
 
 	return (
 		<>
