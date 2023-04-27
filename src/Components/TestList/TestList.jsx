@@ -22,7 +22,7 @@ export const TestList = () => {
 					{questions.error}
 				</div>
 			)}
-			{status === 'resolved' && <TestItem questions={questions} />}
+			{status === 'resolved' && <TestItem />}
 		</>
 	);
 };

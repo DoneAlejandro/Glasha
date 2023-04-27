@@ -6,6 +6,7 @@ const initialState = {
 	status: 'idle',
 	error: null,
 	score: 0,
+	currentQuestionIndex: 0,
 };
 
 // export const fetchQuestions = createAsyncThunk(
@@ -24,7 +25,11 @@ const initialState = {
 const questionsSlice = createSlice({
 	name: 'questions',
 	initialState,
-	reducers: {},
+	reducers: {
+		setCurrentQuestionIndex: (state, action) => {
+			state.currentQuestionIndex = action.payload
+		}
+	},
 	extraReducers: builder => {
 		builder
 			.addCase(fetchQuestions.pending, state => {
@@ -43,5 +48,7 @@ const questionsSlice = createSlice({
 			});
 	},
 });
+
+export const {setCurrentQuestionIndex} = questionsSlice.actions
 
 export default questionsSlice.reducer;

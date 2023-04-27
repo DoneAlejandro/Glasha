@@ -1,16 +1,28 @@
-import React from 'react';
+import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentQuestionIndex } from '../../store/questionsSlice/questionsSlice';
 import style from './TestItem.module.scss';
 
-export const TestItem = questions => {
-	const [first, setfirst] = useState(second)
+export const TestItem = () => {
+	const dispatch = useDispatch();
+	const currentQuestionIndex = useSelector(
+		state => state.questions.currentQuestionIndex
+	);
+	const questions = useSelector(state => state.questions.questions);
 	console.log(questions);
+
+	const currentQuestion = useMemo(() => {
+		return questions[currentQuestionIndex];
+	}, [questions, currentQuestionIndex]);
+
+	const handleNextQuestions = () => {
+		dispatch(setCurrentQuestionIndex(currentQuestionIndex + 1));
+	};
 	return (
 		<>
-			test
 			<div className={style.testItemWrapper}>
-				{questions.questions.map(question => (
-					<div>{question.text}</div>
-				))}
+				<h2 className={style.testItemWrapper__title}>{currentQuestion.text}</h2>
+				
 			</div>
 		</>
 	);
