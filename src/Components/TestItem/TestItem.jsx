@@ -22,7 +22,15 @@ export const TestItem = () => {
 		<>
 			<div className={style.testItemWrapper}>
 				<h2 className={style.testItemWrapper__title}>{currentQuestion.text}</h2>
-				
+				<ul>
+					{currentQuestion.answers.map(answer => (
+						<li key={answer.id}>
+							<input type='radio' />
+							<span>{answer.text}</span>
+						</li>
+					))}
+				</ul>
+				<button onClick={() => handleNextQuestions()}>СЛЕДУЮЩИЙ ВОПРОС</button>
 			</div>
 		</>
 	);
