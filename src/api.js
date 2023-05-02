@@ -13,3 +13,10 @@ export const fetchQuestions = createAsyncThunk('data/fetchData', async () => {
 	const response = await axios.get(`${BASE_URL}/questions`);
 	return response.data;
 });
+
+export const submitAnswer = createAsyncThunk(
+	'test/submitAnswer',
+	selectedOptionId => {
+		return selectedOptionId;
+	}
+);

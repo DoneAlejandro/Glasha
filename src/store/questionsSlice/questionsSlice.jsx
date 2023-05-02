@@ -28,6 +28,9 @@ const questionsSlice = createSlice({
 	reducers: {
 		setCurrentQuestionIndex: (state, action) => {
 			state.currentQuestionIndex = action.payload
+		},
+		checkedAnswer: (state, action) => {
+			// const 
 		}
 	},
 	extraReducers: builder => {

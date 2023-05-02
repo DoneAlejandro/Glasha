@@ -24,13 +24,13 @@ export const TestItem = () => {
 				<h2 className={style.testItemWrapper__title}>{currentQuestion.text}</h2>
 				<ul>
 					{currentQuestion.answers.map(answer => (
-						<li key={answer.id}>
-							<input type='radio' />
+						<li key={answer.id} className={style.testItemWrapper__answer}>
+							<input type='radio' className={style.testItemWrapper__check} />
 							<span>{answer.text}</span>
 						</li>
 					))}
 				</ul>
-				<button onClick={() => handleNextQuestions()}>СЛЕДУЮЩИЙ ВОПРОС</button>
+				<button onClick={() => handleNextQuestions()} className={style.testItemWrapper__btn}>СЛЕДУЮЩИЙ ВОПРОС</button>
 			</div>
 		</>
 	);
