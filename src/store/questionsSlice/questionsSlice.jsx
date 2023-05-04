@@ -30,7 +30,7 @@ const questionsSlice = createSlice({
 			state.currentQuestionIndex = action.payload
 		},
 		checkedAnswer: (state, action) => {
-			// const 
+			
 		}
 	},
 	extraReducers: builder => {

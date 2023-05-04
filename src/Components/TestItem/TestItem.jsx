@@ -25,12 +25,21 @@ export const TestItem = () => {
 				<ul>
 					{currentQuestion.answers.map(answer => (
 						<li key={answer.id} className={style.testItemWrapper__answer}>
-							<input type='radio' className={style.testItemWrapper__check} />
+							<input
+								type='radio'
+								className={style.testItemWrapper__check}
+								checked={answer.id}
+							/>
 							<span>{answer.text}</span>
 						</li>
 					))}
 				</ul>
-				<button onClick={() => handleNextQuestions()} className={style.testItemWrapper__btn}>СЛЕДУЮЩИЙ ВОПРОС</button>
+				<button
+					onClick={() => handleNextQuestions()}
+					className={style.testItemWrapper__btn}
+				>
+					СЛЕДУЮЩИЙ ВОПРОС
+				</button>
 			</div>
 		</>
 	);
