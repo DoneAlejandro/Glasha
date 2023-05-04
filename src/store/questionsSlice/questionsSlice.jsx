@@ -27,11 +27,14 @@ const questionsSlice = createSlice({
 	initialState,
 	reducers: {
 		setCurrentQuestionIndex: (state, action) => {
-			state.currentQuestionIndex = action.payload
+			state.currentQuestionIndex = action.payload;
 		},
 		checkedAnswer: (state, action) => {
-			
-		}
+			const toggleAnswer = state.questions.answers.find(
+				answer => answer.id === action.payload.id
+			);
+			toggleAnswer.check = !toggleAnswer.check;
+		},
 	},
 	extraReducers: builder => {
 		builder
@@ -52,6 +55,7 @@ const questionsSlice = createSlice({
 	},
 });
 
-export const {setCurrentQuestionIndex} = questionsSlice.actions
+export const { setCurrentQuestionIndex, checkedAnswer } =
+	questionsSlice.actions;
 
 export default questionsSlice.reducer;

@@ -1,15 +1,22 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentQuestionIndex } from '../../store/questionsSlice/questionsSlice';
 import style from './TestItem.module.scss';
 
 export const TestItem = () => {
 	const dispatch = useDispatch();
+
+	const [ck, setCk] = useState(false);
+	const tgCk = () => {
+		setCk(!ck);
+	};
+
 	const currentQuestionIndex = useSelector(
 		state => state.questions.currentQuestionIndex
 	);
+
 	const questions = useSelector(state => state.questions.questions);
-	console.log(questions);
+	// console.log(questions);
 
 	const currentQuestion = useMemo(() => {
 		return questions[currentQuestionIndex];
@@ -28,7 +35,9 @@ export const TestItem = () => {
 							<input
 								type='radio'
 								className={style.testItemWrapper__check}
-								checked={answer.id}
+								checked={ck}
+								value={answer.value}
+								onChange={tgCk}
 							/>
 							<span>{answer.text}</span>
 						</li>
