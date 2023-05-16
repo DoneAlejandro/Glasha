@@ -29,12 +29,19 @@ const questionsSlice = createSlice({
 		setCurrentQuestionIndex: (state, action) => {
 			state.currentQuestionIndex = action.payload;
 		},
-		checkedAnswer: (state, action) => {
-			const toggleAnswer = state.questions.answers.find(
-				answer => answer.id === action.payload.id
-			);
-			toggleAnswer.check = !toggleAnswer.check;
+		selectAnswer: (state, action) => {
+			const { questionsId, answerValue } = action.payload;
+			const question = state.questions.find(q => q.id === questionsId);
+			if (question) {
+				state.score += answerValue;
+			}
 		},
+		// checkedAnswer: (state, action) => {
+		// 	const toggleAnswer = state.questions.answers.find(
+		// 		answer => answer.id === action.payload.id
+		// 	);
+		// 	toggleAnswer.check = !toggleAnswer.check;
+		// },
 	},
 	extraReducers: builder => {
 		builder
@@ -55,7 +62,6 @@ const questionsSlice = createSlice({
 	},
 });
 
-export const { setCurrentQuestionIndex, checkedAnswer } =
-	questionsSlice.actions;
+export const { setCurrentQuestionIndex, selectAnswer } = questionsSlice.actions;
 
 export default questionsSlice.reducer;
