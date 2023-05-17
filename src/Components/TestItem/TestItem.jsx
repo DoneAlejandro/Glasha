@@ -25,17 +25,20 @@ export const TestItem = () => {
 			);
 		}
 	};
+
 	// обработчик value у ответа
 	const handleInputChange = answerValue => {
 		setSelectedAnswer(answerValue);
 	};
+
 	// массив вопросов для рендера
 	const questions = useSelector(state => state.questions.questions);
+
 	// рендер одного вопроса с мемоизацией
 	const currentQuestion = useMemo(() => {
 		return questions[currentQuestionIndex];
 	}, [questions, currentQuestionIndex]);
-	// console.log(currentQuestion);
+
 	//функция, которая выбирает нужный ответ
 	// переключает вопрос
 	// сбрасывает ответ
@@ -44,6 +47,7 @@ export const TestItem = () => {
 		dispatch(setCurrentQuestionIndex(currentQuestionIndex + 1));
 		setSelectedAnswer(null);
 	};
+	const isDisabled = selectedAnswer === null;
 	return (
 		<>
 			<div className={style.testItemWrapper}>
@@ -63,6 +67,7 @@ export const TestItem = () => {
 					))}
 				</ul>
 				<button
+					disabled={isDisabled}
 					onClick={() => handleNextQuestions()}
 					className={style.testItemWrapper__btn}
 				>
