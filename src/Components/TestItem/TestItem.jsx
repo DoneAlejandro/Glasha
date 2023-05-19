@@ -1,14 +1,25 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
 	selectAnswer,
 	setCurrentQuestionIndex,
+	setIsCompletedTest,
 } from '../../store/questionsSlice/questionsSlice';
 import style from './TestItem.module.scss';
 
 export const TestItem = () => {
 	const dispatch = useDispatch();
+
+	// состояние для определения выбранного ответа
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
+
+	//состояние для определения завершения теста
+	const [isTestComplete, setIsTestComplete] = useState(false);
+
+	// хук для редиректа
+	const navigate = useNavigate();
+
 	// индекс вопроса
 	const currentQuestionIndex = useSelector(
 		state => state.questions.currentQuestionIndex
@@ -33,21 +44,38 @@ export const TestItem = () => {
 
 	// массив вопросов для рендера
 	const questions = useSelector(state => state.questions.questions);
-
+	// console.log(questions);
 	// рендер одного вопроса с мемоизацией
 	const currentQuestion = useMemo(() => {
 		return questions[currentQuestionIndex];
 	}, [questions, currentQuestionIndex]);
 
 	//функция, которая выбирает нужный ответ
+	// если вопросы не кончились
 	// переключает вопрос
 	// сбрасывает ответ
+	// иначе меняет состояние setIsTestComplete
 	const handleNextQuestions = () => {
-		handleAnswerSelect();
-		dispatch(setCurrentQuestionIndex(currentQuestionIndex + 1));
-		setSelectedAnswer(null);
+		if (currentQuestionIndex < questions.length - 1) {
+			handleAnswerSelect();
+			dispatch(setCurrentQuestionIndex(currentQuestionIndex + 1));
+			setSelectedAnswer(null);
+		} else {
+			setIsTestComplete(true);
+			dispatch(setIsCompletedTest(true));
+		}
 	};
+	//  отключение кнопки, если не выбран ни одни ответ
 	const isDisabled = selectedAnswer === null;
+
+	// если вопросы кончились
+	// редиректим на страницу с результатами
+	useEffect(() => {
+		if (isTestComplete) {
+			navigate('/complete-test');
+		}
+	}, [isTestComplete, navigate]);
+
 	return (
 		<>
 			<div className={style.testItemWrapper}>

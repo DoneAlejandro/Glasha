@@ -7,6 +7,7 @@ const initialState = {
 	error: null,
 	score: 0,
 	currentQuestionIndex: 0,
+	isCompleteTest: false,
 };
 
 // export const fetchQuestions = createAsyncThunk(
@@ -36,6 +37,9 @@ const questionsSlice = createSlice({
 				state.score += answerValue;
 			}
 		},
+		setIsCompletedTest: (state, action) => {
+			state.isCompleteTest = action.payload;
+		},
 		// checkedAnswer: (state, action) => {
 		// 	const toggleAnswer = state.questions.answers.find(
 		// 		answer => answer.id === action.payload.id
@@ -62,6 +66,6 @@ const questionsSlice = createSlice({
 	},
 });
 
-export const { setCurrentQuestionIndex, selectAnswer } = questionsSlice.actions;
+export const { setCurrentQuestionIndex, selectAnswer, setIsCompletedTest } = questionsSlice.actions;
 
 export default questionsSlice.reducer;
