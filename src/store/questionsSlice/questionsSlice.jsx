@@ -10,19 +10,6 @@ const initialState = {
 	isCompleteTest: false,
 };
 
-// export const fetchQuestions = createAsyncThunk(
-// 	'questions/fetchQuestions',
-// 	async function () {
-// 		const response = await fetch(
-// 			'https://jsonplaceholder.typicode.com/todos?_limit=10'
-// 		);
-// 		console.log(response);
-// 		const data = await response.json();
-
-// 		return data;
-// 	}
-// );
-// debugger;
 const questionsSlice = createSlice({
 	name: 'questions',
 	initialState,
