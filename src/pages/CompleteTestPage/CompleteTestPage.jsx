@@ -16,29 +16,30 @@ export const CompleteTestPage = () => {
 	}, [dispatch]);
 
 	let totalProfession = professions.jobs;
-	console.log(totalProfession[0]);
+	// console.log(totalProfession[0].title);
+	return <div>{totalProfession[0].title}</div>;
 	// if (totalScore <= 30) {
 	// 	return (
 	// 		<p>
-	// 			Вам стоит обратить внимание на профессию: `${totalProfession[3].title}`
+	// 			Вам стоит обратить внимание на профессию: {totalProfession[3].title}
 	// 		</p>
 	// 	);
 	// } else if (totalScore > 30 && totalScore <= 50) {
 	// 	return (
 	// 		<p>
-	// 			Вам стоит обратить внимание на профессию: `${totalProfession[2].title}`
+	// 			Вам стоит обратить внимание на профессию: {totalProfession[2].title}
 	// 		</p>
 	// 	);
 	// } else if (totalScore > 50 && totalScore <= 70) {
 	// 	return (
 	// 		<p>
-	// 			Вам стоит обратить внимание на профессию: `${totalProfession[1].title}`
+	// 			Вам стоит обратить внимание на профессию: {totalProfession[1].title}
 	// 		</p>
 	// 	);
 	// } else {
 	// 	return (
 	// 		<p>
-	// 			Вам стоит обратить внимание на профессию: `${totalProfession[0].title}`
+	// 			Вам стоит обратить внимание на профессию: {totalProfession[0].title}
 	// 		</p>
 	// 	);
 	// }
