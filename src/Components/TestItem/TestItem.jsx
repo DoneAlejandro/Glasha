@@ -12,7 +12,6 @@ export const TestItem = ({
 				<ul>
 					{currentQuestion.answers.map(answer => (
 						<li key={answer.id} className={style.testItemWrapper__answer}>
-	
 							<input
 								type='radio'
 								className={style.testItemWrapper__check}

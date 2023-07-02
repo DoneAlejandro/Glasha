@@ -6,32 +6,41 @@ export const Header = () => {
 	return (
 		<>
 			<header className={style.header}>
-				<div className='header__logo'>
-					<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-						<circle cx='50' cy='50' r='45' fill='#8BC34A' />
-						<text
-							x='50'
-							y='55'
-							fontSize='30'
-							fontWeight='bold'
-							textAnchor='middle'
-							fill='#FFFFFF'
+				<div className={style.header__container}>
+					<div className={style.header__logo}>ТЕСТПРО</div>
+					<nav className={style.header__link}>
+						<NavLink
+							className={({ isActive }) =>
+								isActive
+									? `${style.header__linkItem} ${style.header__activeLink}`
+									: style.header__linkItem
+							}
+							to={'/'}
 						>
-							ТЕСТ
-						</text>
-					</svg>
+							Главная
+						</NavLink>
+						<NavLink
+							className={({ isActive }) =>
+								isActive
+									? `${style.header__linkItem} ${style.header__activeLink}`
+									: style.header__linkItem
+							}
+							to={'/test'}
+						>
+							Пройти тест
+						</NavLink>
+						<NavLink
+							className={({ isActive }) =>
+								isActive
+									? `${style.header__linkItem} ${style.header__activeLink}`
+									: style.header__linkItem
+							}
+							to={'/contact'}
+						>
+							Контакты
+						</NavLink>
+					</nav>
 				</div>
-				<nav className='header__link'>
-					<NavLink className={style.header__linkItem} to={'/test'}>
-						TestPage
-					</NavLink>
-					<NavLink className={style.header__linkItem} to={'/'}>
-						HomePage
-					</NavLink>
-					<NavLink className={style.header__linkItem} to={'/contact'}>
-						ContactPage
-					</NavLink>
-				</nav>
 			</header>
 		</>
 	);

@@ -1,16 +1,38 @@
+@import '../../UI/variables.scss';
 .testListWrapper {
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	&__btn {
+	width: 100%;
+	margin-top: 10vh;
+	&__container {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__indexQuestion {
+		font-size: 18px;
+		color: $text-color;
+		margin-bottom: 2vh;
+		padding-left: 5vw;
+	}
+	&__btnDisabled {
+		max-width: 200px;
+		margin: 0 auto;
+		padding: 10px 15px;
+		border-radius: 20px;
+		background-color: $text-color-dark-light;
+	}
+	&__btnActive {
 		max-width: 200px;
 		margin: 0 auto;
 		padding: 10px 15px;
 		border-radius: 20px;
 		transition: all 0.4s ease;
+		background: $text-color-light;
+		color: $text-color-dark;
 		&:hover {
-			background-color: #61b22c;
+			background-color: $text-color-dark;
+			color: #fff;
 		}
 	}
 }

@@ -1,0 +1,34 @@
+@import '../../UI/variables.scss';
+.homePageWrapper {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	&__title {
+		span {
+			color: $text-color;
+			font-size: clamp(3rem, 5vw, 6rem);
+			font-weight: 900;
+		}
+		display: flex;
+		align-items: center;
+		color: $text-color-dark;
+	}
+	&__subtitle {
+		max-width: 1000px;
+		text-align: center;
+		margin-top: 2vh;
+		font-size: clamp(1.25rem, 1.5vw, 1.3175rem);
+		color: $text-color-subtitle;
+		line-height: clamp(1.6rem, 3vw, 2.25rem);
+		font-weight: 400;
+		span {
+			color: $text-color;
+			font-weight: 900
+		}
+	}
+	&__img {
+		max-width: 55%;
+	}
+}

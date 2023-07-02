@@ -83,27 +83,36 @@ export const TestList = () => {
 	return (
 		<>
 			<div className={style.testListWrapper}>
-				{status === 'loading' && <div>Loading...</div>}
-				{status === 'error' && (
-					<div>
-						Возникла ошибка при загрузке теста, попробуйте позднее
-						{questions.error}
-					</div>
-				)}
-				{status === 'resolved' && (
-					<TestItem
-						handleInputChange={handleInputChange}
-						currentQuestion={currentQuestion}
-						selectedAnswer={selectedAnswer}
-					/>
-				)}
-				<button
-					disabled={isDisabled}
-					onClick={() => handleNextQuestions()}
-					className={style.testListWrapper__btn}
-				>
-					СЛЕДУЮЩИЙ ВОПРОС
-				</button>
+				<span className={style.testListWrapper__indexQuestion}>
+					{currentQuestionIndex + 1} из 20
+				</span>
+				<div className={style.testListWrapper__container}>
+					{status === 'loading' && <div>Loading...</div>}
+					{status === 'error' && (
+						<div>
+							Возникла ошибка при загрузке теста, попробуйте позднее
+							{questions.error}
+						</div>
+					)}
+					{status === 'resolved' && (
+						<TestItem
+							handleInputChange={handleInputChange}
+							currentQuestion={currentQuestion}
+							selectedAnswer={selectedAnswer}
+						/>
+					)}
+					<button
+						disabled={isDisabled}
+						onClick={() => handleNextQuestions()}
+						className={
+							!isDisabled
+								? style.testListWrapper__btnActive
+								: style.testListWrapper__btnDisabled
+						}
+					>
+						СЛЕДУЮЩИЙ ВОПРОС
+					</button>
+				</div>
 			</div>
 		</>
 	);

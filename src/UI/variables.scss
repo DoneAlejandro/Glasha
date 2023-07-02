@@ -5,60 +5,10 @@ $container-width-laptop: 750px;
 $container-width-mobile: none;
 
 // переменные для цветов
-$bg-main: #4fd089;
-
-
-
-// import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-// import { getQuestions } from '../api';
-
-// export const fetchQuestions = createAsyncThunk(
-// 	'test/fetchQuestions',
-// 	async () => {
-// 		const questions = await getQuestions();
-// 		return questions;
-// 	}
-// );
-
-// const initialState = {
-// 	questions: [],
-// 	currentQuestionsIndex: 0,
-// 	answers: {},
-// 	isLoading: false,
-// 	error: null,
-// };
-
-// const questionsSlice = createSlice({
-// 	name: 'test',
-// 	initialState,
-// 	reducers: {
-// 		setAnswer: (state, action) => {
-// 			const { questionsId, optionId } = action.payload;
-// 			state.answers[questionsId] = optionId;
-// 		},
-// 		setCurrentQuestionsIndex: (state, action) => {
-// 			state.currentQuestionsIndex = action.payload;
-// 		},
-// 	},
-// 	extraReducers: builder => {
-// 		builder
-// 			.addCase(fetchQuestions.pending, state => {
-// 				state.isLoading = true;
-// 			})
-// 			.addCase(fetchQuestions.fulfilled, (state, action) => {
-// 				state.isLoading = false;
-
-// 				state.questions = action.payload;
-// 				state.error = null;
-// 			})
-// 			.addCase(fetchQuestions.rejected, (state, action) => {
-// 				state.isLoading = false;
-// 				state.error = action.error.message;
-// 			});
-// 	},
-// });
-
-// export const { setAnswer, setCurrentQuestionsIndex } = questionsSlice.actions;
-
-
-// export default questionsSlice.reducer;
+$bg-main: rgba(69, 122, 245, .2);
+$text-color: #457af5;
+$text-color-light: rgba(69, 122, 245, .1);
+$text-color-dark: rgba(15, 27, 54, 1);
+$text-color-subtitle: #424242;
+$color-hover: #2980b9;
+$text-color-dark-light: rgba(15, 27, 54, .3);

@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { TestComplete } from '../../Components/TestComplete';
 import { fetchJobs } from '../../api';
+import style from './CompleteTestPage.module.scss';
 
 export const CompleteTestPage = () => {
 	// получаем счёт и профессии
 	const totalScore = useSelector(state => state.questions.score);
 	const professions = useSelector(state => state.jobs);
+	const { jobs, status } = professions;
 	// console.log(totalScore);
 	// console.log(professions);
 
@@ -14,33 +17,27 @@ export const CompleteTestPage = () => {
 	useEffect(() => {
 		dispatch(fetchJobs());
 	}, [dispatch]);
-
-	let totalProfession = professions.jobs;
+	console.log(professions);
+	console.log(jobs);
+	// console.log(jobs[0].title);
+	// let totalProfession = professions.jobs;
 	// console.log(totalProfession[0].title);
-	return <div>{totalProfession[0].title}</div>;
-	// if (totalScore <= 30) {
-	// 	return (
-	// 		<p>
-	// 			Вам стоит обратить внимание на профессию: {totalProfession[3].title}
-	// 		</p>
-	// 	);
-	// } else if (totalScore > 30 && totalScore <= 50) {
-	// 	return (
-	// 		<p>
-	// 			Вам стоит обратить внимание на профессию: {totalProfession[2].title}
-	// 		</p>
-	// 	);
-	// } else if (totalScore > 50 && totalScore <= 70) {
-	// 	return (
-	// 		<p>
-	// 			Вам стоит обратить внимание на профессию: {totalProfession[1].title}
-	// 		</p>
-	// 	);
-	// } else {
-	// 	return (
-	// 		<p>
-	// 			Вам стоит обратить внимание на профессию: {totalProfession[0].title}
-	// 		</p>
-	// 	);
-	// }
+	// return <div>Вам подходит: {totalProfession[0].title}</div>;
+	return (
+		<>
+			<div className={style.CompleteTestPageWrapper}>
+				{status === 'loading' && <div>Loading...</div>}
+				{status === 'error' && (
+					<div>
+						Возникла ошибка при загрузке теста, попробуйте позднее
+						{jobs.error}
+					</div>
+				)}
+				{status === 'resolved' && (
+					<TestComplete totalScore={totalScore} jobs={jobs} />
+				)}
+			</div>
+		</>
+	);
 };
+

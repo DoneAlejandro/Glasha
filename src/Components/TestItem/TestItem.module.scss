@@ -1,25 +1,23 @@
+@import '../../UI/variables.scss';
 .testItemWrapper {
-	// margin: 0 auto;
-	// display: flex;
-	// flex-direction: column;
-	// justify-content: center;
+	max-width: 90%;
+	background-color: #fff;
+	padding: 30px;
+	border-radius: 20px;
+	margin-bottom: 3vh;
+	box-shadow: -2px 0 15px rgba(69, 122, 245, 0.8);
 	&__title {
 		margin-bottom: 15px;
+		color: $text-color;
 	}
 	&__answer {
 		padding: 10px;
+		span {
+			color: $text-color;
+		}
+		margin-bottom: 2vh
 	}
 	&__check {
 		margin-right: 10px;
-	}
-	&__btn {
-		// max-width: 200px;
-		// margin: 0 auto;
-		// padding: 10px 15px;
-		// border-radius: 20px;
-		// transition: all 0.4s ease;
-		// &:hover {
-		// 	background-color: #61b22c;
-		// }
 	}
 }

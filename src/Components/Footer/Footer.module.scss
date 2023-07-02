@@ -1,0 +1,11 @@
+@import '../../UI/variables.scss';
+.footer {
+	padding: 20px;
+	background-color: $color-hover;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	a {
+		color: #fff;
+	}
+}
