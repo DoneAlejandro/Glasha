@@ -1,0 +1,78 @@
+@import '../../UI/variables.scss';
+.popup {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		max-width: 90%;
+		background-color: #fff;
+		padding: 30px;
+		border-radius: 20px;
+		margin-bottom: 3vh;
+		box-shadow: -2px 0 15px rgba(69, 122, 245, 0.8);
+	}
+	&__message {
+		display: flex;
+		flex-direction: column;
+	}
+	&__title {
+		color: $text-color;
+		font-size: 20px;
+		font-weight: 900;
+		margin-bottom: 2vh;
+	}
+	&__subtitle {
+		font-size: 18px;
+		color: $text-color;
+	}
+	&__message {
+		margin-top: 3vh;
+	}
+	&__input {
+		border: none;
+		border-bottom: 1px solid $bg-main;
+		font-size: 18px;
+		width: 100%;
+		padding: 10px;
+	}
+	&__textarea {
+		margin: 2vh 0;
+		border: 1px solid $bg-main;
+		border-radius: 10px;
+		font-size: 18px;
+		text-decoration: none;
+		width: 100%;
+		padding: 10px;
+	}
+	&__send {
+		display: flex;
+		justify-content: center;
+	}
+	&__btnDisabled {
+		border: 2px solid $bg-main;
+		border-radius: 5px;
+		height: 50px;
+		width: 50%;
+		background-color: $text-color-dark-light;
+	}
+	&__btnActive {
+		background: #fff;
+		border: 2px solid $bg-main;
+		border-radius: 5px;
+		cursor: pointer;
+		height: 50px;
+		width: 50%;
+		color: $text-color;
+		&:hover {
+			background-color: $text-color-dark;
+			color: #fff;
+		}
+	}
+	&__textarea {
+		resize: none;
+	}
+}

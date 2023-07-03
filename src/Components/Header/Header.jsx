@@ -7,7 +7,9 @@ export const Header = () => {
 		<>
 			<header className={style.header}>
 				<div className={style.header__container}>
-					<div className={style.header__logo}>ТЕСТПРО</div>
+					<div className={style.header__logo}>
+						<NavLink to={'/'}>ТЕСТПРО</NavLink>
+					</div>
 					<nav className={style.header__link}>
 						<NavLink
 							className={({ isActive }) =>
