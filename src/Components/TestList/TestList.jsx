@@ -80,14 +80,18 @@ export const TestList = () => {
 		}
 	}, [isTestComplete, navigate]);
 
+	// ниже рендерим наши вопросы 
+	// есть обработка загрузки и ошибки
 	return (
 		<>
 			<div className={style.testListWrapper}>
 				<span className={style.testListWrapper__indexQuestion}>
-					{currentQuestionIndex + 1} из 20
+					{currentQuestionIndex + 1} из {questions.length}
 				</span>
 				<div className={style.testListWrapper__container}>
-					{status === 'loading' && <div>Loading...</div>}
+					{status === 'loading' && (
+						<div className={style.testListWrapper__loading}>Loading...</div>
+					)}
 					{status === 'error' && (
 						<div>
 							Возникла ошибка при загрузке теста, попробуйте позднее
@@ -101,17 +105,21 @@ export const TestList = () => {
 							selectedAnswer={selectedAnswer}
 						/>
 					)}
-					<button
-						disabled={isDisabled}
-						onClick={() => handleNextQuestions()}
-						className={
-							!isDisabled
-								? style.testListWrapper__btnActive
-								: style.testListWrapper__btnDisabled
-						}
-					>
-						СЛЕДУЮЩИЙ ВОПРОС
-					</button>
+					{status === 'loading' || status === 'error' ? (
+						''
+					) : (
+						<button
+							disabled={isDisabled}
+							onClick={() => handleNextQuestions()}
+							className={
+								!isDisabled
+									? style.testListWrapper__btnActive
+									: style.testListWrapper__btnDisabled
+							}
+						>
+							СЛЕДУЮЩИЙ ВОПРОС
+						</button>
+					)}
 				</div>
 			</div>
 		</>

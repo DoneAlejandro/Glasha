@@ -1,0 +1,44 @@
+@import '../../UI/variables.scss';
+.testIsEmpty {
+	width: 50%;
+	height: 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+	padding: 30px;
+	border-radius: 20px;
+	color: $text-color;
+	font-weight: 700;
+	font-size: 16px;
+	text-align: center;
+	box-shadow: -2px 0 15px rgba(69, 122, 245, 0.8);
+}
+.resultJob {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+	padding: 90px 30px;
+	border-radius: 20px;
+	text-align: center;
+	box-shadow: -2px 0 15px rgba(69, 122, 245, 0.8);
+	&__title {
+		font-size: 20px;
+		color: $text-color;
+		font-weight: 600;
+		line-height: normal;
+		span {
+			color: $text-color-dark;
+		}
+		margin-bottom: 2vh;
+	}
+	&__description {
+		font-size: 20px;
+		color: $text-color;
+		font-weight: 400;
+		line-height: normal;
+	}
+}

@@ -9,26 +9,24 @@ export const CompleteTestPage = () => {
 	const totalScore = useSelector(state => state.questions.score);
 	const professions = useSelector(state => state.jobs);
 	const { jobs, status } = professions;
-	// console.log(totalScore);
-	// console.log(professions);
-
+	// используем диспатч для взаимодействия с редьюсером
 	const dispatch = useDispatch();
-
+	// получаем подходящие профессии
 	useEffect(() => {
 		dispatch(fetchJobs());
 	}, [dispatch]);
-	console.log(professions);
-	console.log(jobs);
-	// console.log(jobs[0].title);
-	// let totalProfession = professions.jobs;
-	// console.log(totalProfession[0].title);
-	// return <div>Вам подходит: {totalProfession[0].title}</div>;
+	// в рендере ниже отрабатываем загрузку  и ошибку
+	// если всё ок, то появляются вопросы
 	return (
 		<>
 			<div className={style.CompleteTestPageWrapper}>
-				{status === 'loading' && <div>Loading...</div>}
+				{status === 'loading' && (
+					<div className={style.CompleteTestPageWrapper__loading}>
+						Loading...
+					</div>
+				)}
 				{status === 'error' && (
-					<div>
+					<div className={style.CompleteTestPageWrapper__error}>
 						Возникла ошибка при загрузке теста, попробуйте позднее
 						{jobs.error}
 					</div>
@@ -40,4 +38,3 @@ export const CompleteTestPage = () => {
 		</>
 	);
 };
-

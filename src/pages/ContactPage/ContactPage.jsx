@@ -3,16 +3,20 @@ import React, { useState } from 'react';
 import style from './Contact.module.scss';
 
 export const ContactPage = () => {
+	// создаём состояние для полей имени, почты и сообщения 
+	// по умолчанию пустая строка
 	const [values, setValues] = useState({
 		user_name: '',
 		user_email: '',
 		message: '',
 	});
+	// если форма не заполнена, кнопка неактивна 
 	const isDisabled =
 		values.message === '' ||
 		values.user_email === '' ||
 		values.user_name === '';
-
+//  отправка писма
+// если этот коммент висит, значит валидация почты не настроена 
 	const sendEmail = e => {
 		e.preventDefault();
 

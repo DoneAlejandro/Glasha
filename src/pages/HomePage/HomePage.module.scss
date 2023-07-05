@@ -5,6 +5,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding: 0 2vw;
 	&__title {
 		span {
 			color: $text-color;
@@ -25,10 +26,43 @@
 		font-weight: 400;
 		span {
 			color: $text-color;
-			font-weight: 900
+			font-weight: 900;
 		}
 	}
 	&__img {
 		max-width: 55%;
+	}
+}
+@media (max-width: 1065px) {
+	.homePageWrapper {
+		&__title {
+			font-size: 20px;
+			span {
+				font-size: clamp(2rem, 3vw, 4rem);
+				margin-bottom: 1.5vh;
+			}
+		}
+	}
+}
+@media (max-width: 705px) {
+	.homePageWrapper {
+		&__title {
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+		}
+		&__subtitle {
+			font-size: clamp(1.2rem, 1.5vw, 1.3175rem);
+		}
+		&__img {
+			max-width: 65%;
+		}
+	}
+}
+@media (max-width: 500px) {
+	.homePageWrapper {
+		&__img {
+			max-width: 85%;
+		}
 	}
 }

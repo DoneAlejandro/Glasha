@@ -4,7 +4,8 @@
 	background-color: #fff;
 	padding: 30px;
 	border-radius: 20px;
-	margin-bottom: 3vh;
+	margin-bottom: 10vh;
+	margin-top: 5vh;
 	box-shadow: -2px 0 15px rgba(69, 122, 245, 0.8);
 	&__title {
 		margin-bottom: 15px;
@@ -15,7 +16,7 @@
 		span {
 			color: $text-color;
 		}
-		margin-bottom: 2vh
+		margin-bottom: 2vh;
 	}
 	&__check {
 		margin-right: 10px;

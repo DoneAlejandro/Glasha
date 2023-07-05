@@ -12,7 +12,6 @@
 		background-color: #fff;
 		padding: 30px;
 		border-radius: 20px;
-		margin-bottom: 3vh;
 		box-shadow: -2px 0 15px rgba(69, 122, 245, 0.8);
 	}
 	&__message {
@@ -67,8 +66,9 @@
 		height: 50px;
 		width: 50%;
 		color: $text-color;
+		transition: all 0.7s ease 0s;
 		&:hover {
-			background-color: $text-color-dark;
+			background-color: $color-hover;
 			color: #fff;
 		}
 	}

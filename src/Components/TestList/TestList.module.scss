@@ -2,6 +2,21 @@
 .testListWrapper {
 	width: 100%;
 	margin-top: 10vh;
+	margin-bottom: 5vh;
+	&__loading {
+		width: 50%;
+		height: 40%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #fff;
+		padding: 30px;
+		border-radius: 20px;
+		color: $text-color;
+		font-weight: 700;
+		font-size: 16px;
+		box-shadow: -2px 0 15px rgba(69, 122, 245, 0.8);
+	}
 	&__container {
 		width: 100%;
 		display: flex;
@@ -12,26 +27,25 @@
 	&__indexQuestion {
 		font-size: 18px;
 		color: $text-color;
-		margin-bottom: 2vh;
 		padding-left: 5vw;
 	}
 	&__btnDisabled {
-		max-width: 200px;
+		max-width: 300px;
 		margin: 0 auto;
-		padding: 10px 15px;
+		padding: 20px 57px;
 		border-radius: 20px;
 		background-color: $text-color-dark-light;
 	}
 	&__btnActive {
-		max-width: 200px;
+		max-width: 300px;
 		margin: 0 auto;
-		padding: 10px 15px;
+		padding: 20px 57px;
 		border-radius: 20px;
 		transition: all 0.4s ease;
 		background: $text-color-light;
 		color: $text-color-dark;
 		&:hover {
-			background-color: $text-color-dark;
+			background-color: $color-hover;
 			color: #fff;
 		}
 	}

@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchQuestions } from '../../api';
 
+// начальное состояние
 const initialState = {
 	questions: [],
 	status: 'idle',
@@ -10,6 +11,7 @@ const initialState = {
 	isCompleteTest: false,
 };
 
+// создаёи слайс
 const questionsSlice = createSlice({
 	name: 'questions',
 	initialState,
@@ -27,15 +29,11 @@ const questionsSlice = createSlice({
 		setIsCompletedTest: (state, action) => {
 			state.isCompleteTest = action.payload;
 		},
-		// checkedAnswer: (state, action) => {
-		// 	const toggleAnswer = state.questions.answers.find(
-		// 		answer => answer.id === action.payload.id
-		// 	);
-		// 	toggleAnswer.check = !toggleAnswer.check;
-		// },
+
 	},
 	extraReducers: builder => {
 		builder
+		// присваиваем значения переменным в зависимости от того что пришло с сервера
 			.addCase(fetchQuestions.pending, state => {
 				state.status = 'loading';
 				state.error = null;
@@ -43,7 +41,6 @@ const questionsSlice = createSlice({
 			.addCase(fetchQuestions.fulfilled, (state, action) => {
 				state.status = 'resolved';
 				state.questions = action.payload;
-				// console.log(state.questions);
 				state.error = null;
 			})
 			.addCase(fetchQuestions.rejected, (state, action) => {

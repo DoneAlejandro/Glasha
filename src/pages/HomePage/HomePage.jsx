@@ -3,6 +3,8 @@ import style from './HomePage.module.scss';
 import intro from '../../UI/assets/1620103502_18-phonoteka_org-p-distantsionnoe-obuchenie-fon-19.png'
 
 export const HomePage = () => {
+	// рендер главная страница 
+	
 	return (
 		<>
 			<div className={style.homePageWrapper}>

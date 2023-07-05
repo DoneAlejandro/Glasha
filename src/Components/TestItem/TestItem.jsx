@@ -1,10 +1,13 @@
 import style from './TestItem.module.scss';
 
+// из пропсов получаем необходимые функции
+// и рендерим вопрос и варианты ответа 
 export const TestItem = ({
 	handleInputChange,
 	currentQuestion,
 	selectedAnswer,
 }) => {
+	
 	return (
 		<>
 			<div className={style.testItemWrapper}>

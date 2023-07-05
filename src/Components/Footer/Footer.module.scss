@@ -5,7 +5,17 @@
 	color: #fff;
 	display: flex;
 	justify-content: space-between;
+
 	a {
 		color: #fff;
+	}
+}
+@media (max-width: 600px) {
+	.footer {
+		flex-direction: column;
+		text-align: center;
+		div {
+			padding-bottom: 1vh;
+		}
 	}
 }

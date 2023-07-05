@@ -1,17 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchJobs } from '../../api';
 
+// начальное состояние
 const initialState = {
 	jobs: [],
 	status: 'idle',
 	error: null,
 };
 
+// создаёи слайс
 const jobsSlice = createSlice({
 	name: 'jobs',
 	initialState,
 	reducers: {},
 	extraReducers: builder => {
+		// присваиваем значения переменным в зависимости от того что пришло с сервера
 		builder
 			.addCase(fetchJobs.pending, state => {
 				state.status = 'loading';

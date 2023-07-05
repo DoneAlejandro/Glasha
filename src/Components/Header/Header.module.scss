@@ -82,8 +82,32 @@
 		color: #fff;
 	}
 }
-// .active {
-// 	background: #2980b9;
-// 	color: #fff;
-// 	font-size: 25px;
-// }
+@media (max-width: 900px) {
+	.header {
+		&__link {
+			min-width: 60%;
+		}
+		&__linkItem {
+			padding: 17px 10px;
+			font-size: clamp(0.8rem, 1.5vw, 1.3rem);
+		}
+	}
+}
+@media (max-width: 600px) {
+	.header {
+		&__container {
+			flex-direction: column;
+		}
+		&__linkItem {
+			font-size: clamp(0.8rem, 1.5vw, 1.3rem);
+		}
+	}
+}
+
+@media (max-width: 360px) {
+	.header {
+		&__linkItem {
+			font-size: clamp(1rem, 1.5vw);
+		}
+	}
+}

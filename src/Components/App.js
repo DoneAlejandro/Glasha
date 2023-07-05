@@ -9,10 +9,7 @@ import { Header } from './Header';
 import { Main } from './Main';
 
 function App() {
-	// const dispatch = useDispatch();
-	// useEffect(() => {
-	// 	dispatch(fetchQuestions());
-	// }, [dispatch]);
+	// компонент в котором мы собираем хедер (шапка), мейн (контент), футер (подвал)
 
 	return (
 		<>
