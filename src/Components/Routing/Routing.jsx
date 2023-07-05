@@ -13,6 +13,7 @@ export const Routing = () => {
 				<Route element={<TestPage />} path={'/test'} />
 				<Route element={<ContactPage />} path={'/contact'} />
 				<Route element={<CompleteTestPage />} path={'/complete-test'} />
+				<Route element={<HomePage />} path={'*'} />
 			</Routes>
 		</>
 	);

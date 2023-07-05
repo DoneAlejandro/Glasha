@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Glasha/static/css/main.9afb733e.css",
+    "main.js": "/Glasha/static/js/main.bf1ddfd8.js",
+    "static/media/1620103502_18-phonoteka_org-p-distantsionnoe-obuchenie-fon-19.png": "/Glasha/static/media/1620103502_18-phonoteka_org-p-distantsionnoe-obuchenie-fon-19.f3a8c85264f607fafe0a.png",
+    "index.html": "/Glasha/index.html",
+    "main.9afb733e.css.map": "/Glasha/static/css/main.9afb733e.css.map",
+    "main.bf1ddfd8.js.map": "/Glasha/static/js/main.bf1ddfd8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9afb733e.css",
+    "static/js/main.bf1ddfd8.js"
+  ]
+}
