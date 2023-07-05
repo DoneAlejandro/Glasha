@@ -2,6 +2,7 @@
 	"name": "diplom",
 	"version": "0.1.0",
 	"private": true,
+	"homepage": "https://donealejandro.github.io/Glasha",
 	"dependencies": {
 		"@emailjs/browser": "^3.11.0",
 		"@reduxjs/toolkit": "^1.9.3",
@@ -11,6 +12,7 @@
 		"axios": "^1.3.5",
 		"concurrently": "^8.0.1",
 		"emailjs": "^4.0.2",
+		"gh-pages": "^5.0.0",
 		"json-server": "^0.17.3",
 		"node-sass": "^8.0.0",
 		"react": "^18.2.0",
@@ -21,6 +23,8 @@
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
