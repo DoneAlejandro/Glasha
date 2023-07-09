@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8001';
+const BASE_URL = 'https://64a5f7eb00c3559aa9c04b87.mockapi.io';
 
 // запрос вопросов с сервера
 export const fetchQuestions = createAsyncThunk(
@@ -17,4 +17,3 @@ export const fetchJobs = createAsyncThunk('jobs/fetchJobs', async () => {
 	const response = await axios.get(`${BASE_URL}/jobs`);
 	return response.data;
 });
-
