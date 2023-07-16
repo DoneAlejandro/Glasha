@@ -17,6 +17,21 @@
 		font-size: 16px;
 		box-shadow: -2px 0 15px rgba(69, 122, 245, 0.8);
 	}
+	&__error {
+		width: 50%;
+		height: 40%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #fff;
+		padding: 30px;
+		border-radius: 20px;
+		color: $text-color;
+		font-weight: 700;
+		font-size: 16px;
+		text-align: center;
+		box-shadow: -2px 0 15px rgba(69, 122, 245, 0.8);
+	}
 	&__container {
 		width: 100%;
 		display: flex;

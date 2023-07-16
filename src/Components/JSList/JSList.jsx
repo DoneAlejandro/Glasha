@@ -1,22 +1,22 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchQuestions } from '../../api';
+import { fetchTestJs } from '../../api';
 import {
-	selectAnswer,
-	setCurrentQuestionIndex,
-	setIsCompletedTest,
-} from '../../store/questionsSlice/questionsSlice';
+	setScore,
+	setCurrentProgrammingQuestionIndex,
+	setIsCompleteProgrammingTest,
+} from '../../store/ProgrammingTestSlice/ProgrammingTestSlice';
 import { TestItem } from '../TestItem';
-import style from './TestList.module.scss';
+import style from './JSList.module.scss';
 
-export const TestList = () => {
-	const { questions, status } = useSelector(state => state.questions);
+export const JSList = () => {
+	const { questions, status } = useSelector(state => state.testJs);
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(fetchQuestions());
+		dispatch(fetchTestJs());
 	}, [dispatch]);
-	// console.log(questions);
+	console.log(questions);
 
 	// состояние для определения выбранного ответа
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -28,15 +28,15 @@ export const TestList = () => {
 	const navigate = useNavigate();
 
 	// индекс вопроса
-	const currentQuestionIndex = useSelector(
-		state => state.questions.currentQuestionIndex
+	const currentProgrammingQuestionIndex = useSelector(
+		state => state.testJs.currentProgrammingQuestionIndex
 	);
 	// обработчик выбранного ответа
 	// передаёт в редьюсер value
 	const handleAnswerSelect = () => {
 		if (selectedAnswer) {
 			dispatch(
-				selectAnswer({
+				setScore({
 					questionsId: currentQuestion.id,
 					answerValue: selectedAnswer,
 				})
@@ -51,8 +51,8 @@ export const TestList = () => {
 
 	// рендер одного вопроса с мемоизацией
 	const currentQuestion = useMemo(() => {
-		return questions[currentQuestionIndex];
-	}, [questions, currentQuestionIndex]);
+		return questions[currentProgrammingQuestionIndex];
+	}, [questions, currentProgrammingQuestionIndex]);
 
 	//функция, которая выбирает нужный ответ
 	// если вопросы не кончились
@@ -60,13 +60,13 @@ export const TestList = () => {
 	// сбрасывает ответ
 	// иначе меняет состояние setIsTestComplete
 	const handleNextQuestions = () => {
-		if (currentQuestionIndex < questions.length - 1) {
+		if (currentProgrammingQuestionIndex < questions.length - 1) {
 			handleAnswerSelect();
-			dispatch(setCurrentQuestionIndex(currentQuestionIndex + 1));
+			dispatch(setCurrentProgrammingQuestionIndex(currentProgrammingQuestionIndex + 1));
 			setSelectedAnswer(null);
 		} else {
 			setIsTestComplete(true);
-			dispatch(setIsCompletedTest(true));
+			dispatch(setIsCompleteProgrammingTest(true));
 		}
 	};
 	//  отключение кнопки, если не выбран ни одни ответ
@@ -80,20 +80,20 @@ export const TestList = () => {
 		}
 	}, [isTestComplete, navigate]);
 
-	// ниже рендерим наши вопросы 
+	// ниже рендерим наши вопросы
 	// есть обработка загрузки и ошибки
 	return (
 		<>
 			<div className={style.testListWrapper}>
 				<span className={style.testListWrapper__indexQuestion}>
-					{currentQuestionIndex + 1} из {questions.length}
+					{currentProgrammingQuestionIndex + 1} из {questions.length}
 				</span>
 				<div className={style.testListWrapper__container}>
 					{status === 'loading' && (
 						<div className={style.testListWrapper__loading}>Loading...</div>
 					)}
 					{status === 'error' && (
-						<div>
+						<div className={style.testListWrapper__error}>
 							Возникла ошибка при загрузке теста, попробуйте позднее
 							{questions.error}
 						</div>

@@ -13,9 +13,9 @@ export const Header = () => {
 					<nav className={style.header__link}>
 						<NavLink
 							className={({ isActive }) =>
-								isActive
-									? `${style.header__linkItem} ${style.header__activeLink}`
-									: style.header__linkItem
+								!isActive
+									? style.header__linkItem
+									: `${style.header__linkItem} ${style.header__activeLink}`
 							}
 							to={'/'}
 						>
@@ -27,7 +27,7 @@ export const Header = () => {
 									? `${style.header__linkItem} ${style.header__activeLink}`
 									: style.header__linkItem
 							}
-							to={'/test'}
+							to={'/test-list'}
 						>
 							Пройти тест
 						</NavLink>
